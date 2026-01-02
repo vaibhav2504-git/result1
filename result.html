@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MSBTE Result</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
+    }
+
+    .header {
+      text-align: center;
+      padding: 12px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .header img {
+      width: 60px;
+      margin-bottom: 5px;
+    }
+
+    .header h2 {
+      font-size: 16px;
+      margin: 5px 0;
+    }
+
+    .header h3 {
+      font-size: 14px;
+      margin: 0;
+      font-weight: normal;
+    }
+
+    .container {
+      max-width: 420px;
+      margin: 20px auto;
+      background: #fff8cc;
+      padding: 15px;
+      border: 1px solid #e6d98c;
+      border-radius: 4px;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+
+    select, input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 14px;
+    }
+
+    .captcha-box {
+      margin: 10px 0;
+      font-size: 20px;
+      font-weight: bold;
+      color: #b00000;
+      letter-spacing: 2px;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      margin-top: 15px;
+      padding: 10px;
+      background: #ffeb7a;
+      border: 1px solid #c9b94b;
+      border-radius: 3px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #ffe34d;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        margin: 10px;
+      }
+
+      .header h2 {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    <!-- Replace with real logo if needed -->
+    <img src="logo.jpeg" alt="MSBTE Logo" class="logo" style="border-radius: 50%; object-fit: cover; width: 30px;">
+    <h2>Maharashtra State Board of Technical Education</h2>
+    <h3>महाराष्ट्र राज्य तंत्र शिक्षण मंडळ, मुंबई</h3>
+  </div>
+
+  <div class="container">
+    <label>Select Enrollment No. or Seat No.</label>
+    <select>
+      <option>(See Below)</option>
+      <option>Enrollment No.</option>
+      <option>Seat No.</option>
+    </select>
+
+    <label>Enter Enrollment No. or Seat No.</label>
+    <input type="text" id="userInput" placeholder="Enter number">
+   
+
+    <label>Captcha</label>
+    <div class="captcha-box">sW3XDZWz</div>
+
+    <label>Type Above Captcha Here</label>
+    <input type="text" placeholder="Enter captcha">
+
+    <button id="showResultBtn" onclick="showResult()">Show Result</button>
+    <div id="pdfContainer" style="display:none; margin-top:20px; text-align:center;">
+      <iframe id="resultPdf" src="yourfile.pdf" width="90%" height="500px" style="border:1px solid #aaa; border-radius:5px;"></iframe>
+      <br>
+      <button onclick="printPdf()" style="margin-top: 10px;">Print Result</button>
+    </div>
+    <script>
+      function showResult() {
+        // Get the entered Enrollment/Seat No.
+        var enteredNum = document.getElementById("userInput").value.trim();
+        var pdfContainer = document.getElementById("pdfContainer");
+        if (enteredNum === "23510280090") {
+          pdfContainer.style.display = "block";
+          // Optionally scroll to the pdf
+          pdfContainer.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          pdfContainer.style.display = "none";
+          alert("Result not found! Please enter valid Enrollment No. or Seat No.");
+        }
+      }
+
+      function printPdf() {
+        var iframe = document.getElementById('resultPdf');
+        iframe.contentWindow.focus();
+        iframe.contentWindow.print();
+      }
+    </script>
+
+  </div>
+
+</body>
+</html>
